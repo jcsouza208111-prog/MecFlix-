@@ -33,7 +33,16 @@
     .about{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
     .about-art{min-height:330px;border-radius:18px;background:linear-gradient(145deg,rgba(237,35,72,.25),rgba(18,22,37,.3)),url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85') center/cover}
     .about p{color:var(--muted)}.about ul{padding-left:20px;color:#dce0ea}.about li{margin:9px 0}
-    .plans{background:linear-gradient(180deg,#0d101b,#090b14)}.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+    .plan-grid{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  align-items:stretch;
+  padding:8px 2px 18px;
+}
+.plan{
+  flex:0 0 280px;
+}
     .plan{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column}
     .plan.featured{border:2px solid var(--red);transform:translateY(-8px);box-shadow:0 15px 50px rgba(237,35,72,.13)}
     .plan h3{margin:0;font-size:1.25rem}.price{font-size:2.6rem;font-weight:900;margin:13px 0 0}.price small{font-size:.9rem;color:var(--muted);font-weight:400}
