@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b14">
+  <title>MecFlix — Seu próximo filme começa aqui</title>
+  <style>
+    :root{--bg:#090b14;--panel:#121625;--muted:#aab1c5;--text:#f7f8fc;--red:#ed2348;--red2:#ff4967;--line:rgba(255,255,255,.1)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(9,11,20,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .logo{font-size:1.7rem;font-weight:900;letter-spacing:-1px}.logo span{color:var(--red)}
+    .navlinks{display:flex;gap:25px;color:#d5d9e5;font-size:.94rem}.navlinks a:hover{color:white}
+    .btn{display:inline-flex;justify-content:center;align-items:center;background:var(--red);color:white;padding:12px 20px;border-radius:8px;font-weight:800;border:0;cursor:pointer;transition:.2s}
+    .btn:hover{background:var(--red2);transform:translateY(-2px)}
+    .hero{min-height:570px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,#090b14 0%,rgba(9,11,20,.94) 38%,rgba(9,11,20,.36) 100%),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85') center/cover}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:130px;background:linear-gradient(transparent,var(--bg))}
+    .hero-content{position:relative;z-index:1;max-width:650px;padding:80px 0}
+    .eyebrow{color:#ff7890;text-transform:uppercase;font-weight:800;letter-spacing:2px;font-size:.78rem}
+    h1{font-size:clamp(2.8rem,7vw,5.3rem);line-height:1.02;letter-spacing:-2px;margin:15px 0}
+    h1 span{color:var(--red)}.lead{font-size:1.13rem;color:#d0d4df;max-width:580px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:27px}.btn.secondary{background:rgba(255,255,255,.1);border:1px solid var(--line)}
+    section{padding:72px 0}.section-title{text-align:center;font-size:clamp(1.9rem,4vw,2.7rem);margin:0 0 12px}.section-sub{text-align:center;color:var(--muted);max-width:680px;margin:0 auto 35px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:var(--panel);border:1px solid var(--line);padding:24px;border-radius:14px}
+    .feature .icon{font-size:1.8rem}.feature h3{margin:12px 0 5px}.feature p{color:var(--muted);margin:0}
+    .catalog{background:#0d101b}.movies{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .movie{position:relative;overflow:hidden;border-radius:12px;background:#202638;min-height:250px;border:1px solid var(--line)}
+    .movie img{width:100%;height:280px;object-fit:cover;display:block;transition:transform .35s}
+    .movie:hover img{transform:scale(1.05)}.movie-info{padding:13px}.movie-info strong{display:block}.tag{font-size:.75rem;color:#ff8ba0}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
+    .about-art{min-height:330px;border-radius:18px;background:linear-gradient(145deg,rgba(237,35,72,.25),rgba(18,22,37,.3)),url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85') center/cover}
+    .about p{color:var(--muted)}.about ul{padding-left:20px;color:#dce0ea}.about li{margin:9px 0}
+    .plans{background:linear-gradient(180deg,#0d101b,#090b14)}.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+    .plan{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column}
+    .plan.featured{border:2px solid var(--red);transform:translateY(-8px);box-shadow:0 15px 50px rgba(237,35,72,.13)}
+    .plan h3{margin:0;font-size:1.25rem}.price{font-size:2.6rem;font-weight:900;margin:13px 0 0}.price small{font-size:.9rem;color:var(--muted);font-weight:400}
+    .plan p{color:var(--muted);margin:5px 0 18px}.plan ul{padding-left:19px;color:#dce0ea;flex:1}.plan li{margin:8px 0}
+    .plan .btn{width:100%;margin-top:15px}.ribbon{color:#ff91a5;font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+    .faq{max-width:800px;margin:auto}.faq details{padding:18px 0;border-bottom:1px solid var(--line)}.faq summary{font-weight:800;cursor:pointer}.faq p{color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem;text-align:center}
+    @media(max-width:760px){.navlinks{display:none}.hero{min-height:540px;background-position:58% center}.features,.plan-grid{grid-template-columns:1fr}.movies{grid-template-columns:repeat(2,1fr)}.movie img{height:230px}.about{grid-template-columns:1fr}.about-art{min-height:230px}.plan.featured{transform:none}}
+    @media(max-width:390px){.movies{gap:10px}.movie img{height:190px}.movie-info{padding:10px}}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#inicio">Mec<span>Flix</span></a>
+    <div class="navlinks"><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#duvidas">Dúvidas</a></div>
+    <a class="btn" href="#planos">Ver planos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-content">
+      <div class="eyebrow">Entre no clima. Dê o play.</div>
+      <h1>Suas histórias favoritas em um só <span>lugar.</span></h1>
+      <p class="lead">Conheça a MecFlix: uma proposta de streaming para quem ama filmes, séries e boas histórias. Prepare a pipoca, escolha o que assistir e transforme qualquer momento em uma sessão especial.</p>
+      <div class="actions"><a class="btn" href="#planos">Conhecer os planos</a><a class="btn secondary" href="#catalogo">Explorar destaques</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Seu entretenimento, do seu jeito</h2>
+      <p class="section-sub">Uma experiência pensada para deixar sua próxima sessão mais simples, agradável e cheia de possibilidades.</p>
+      <div class="features">
+        <article class="feature"><div class="icon">🎬</div><h3>Filmes para cada momento</h3><p>Histórias de aventura, comédia, drama, suspense e muito mais para combinar com seu humor.</p></article>
+        <article class="feature"><div class="icon">🍿</div><h3>Séries para maratonar</h3><p>Encontre novas histórias, acompanhe personagens marcantes e descubra sua próxima série favorita.</p></article>
+        <article class="feature"><div class="icon">📱</div><h3>Praticidade para assistir</h3><p>Uma página simples para conhecer a proposta, comparar os planos e saber como começar.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog" id="catalogo">
+    <div class="wrap">
+      <h2 class="section-title">Um universo de histórias</h2>
+      <p class="section-sub">Estes são exemplos visuais de gêneros que podem fazer parte da experiência MecFlix. Os títulos abaixo são categorias ilustrativas, não um catálogo confirmado.</p>
+      <div class="movies">
+        <article class="movie"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=700&q=80" alt="Cena cinematográfica dramática"><div class="movie-info"><span class="tag">DRAMA</span><strong>Histórias que emocionam</strong></div></article>
+        <article class="movie"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" alt="Paisagem de fantasia"><div class="movie-info"><span class="tag">AVENTURA</span><strong>Novos mundos para explorar</strong></div></article>
+        <article class="movie"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Paisagem de mistério"><div class="movie-info"><span class="tag">SUSPENSE</span><strong>Descubra o inesperado</strong></div></article>
+        <article class="movie"><img src="https://images.unsplash.com/photo-1485236715568-ddc5ee6ca227?auto=format&fit=crop&w=700&q=80" alt="Luzes de cidade à noite"><div class="movie-info"><span class="tag">SÉRIES</span><strong>Uma história após a outra</strong></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap about">
+      <div class="about-art" role="img" aria-label="Equipamento de filmagem em um set de cinema"></div>
+      <div><div class="eyebrow">Conheça a MecFlix</div><h2 class="section-title" style="text-align:left">Mais que dar play: é viver cada história.</h2>
+        <p>A MecFlix nasce com uma ideia simples: aproximar você do entretenimento que gosta. Seja para relaxar depois de um dia cheio, reunir a família para assistir a um filme ou encontrar uma série para acompanhar, a proposta é oferecer uma experiência fácil de conhecer e escolher.</p>
+        <p>Explore diferentes estilos, compare as opções de assinatura e escolha o período que combina com você. O objetivo é que sua próxima sessão comece com poucos cliques.</p>
+        <ul><li>Opções de assinatura mensal, semestral e anual.</li><li>Uma apresentação clara dos planos e valores.</li><li>Uma experiência adaptada para telas de celular e computador.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="plans" id="planos">
+    <div class="wrap">
+      <h2 class="section-title">Escolha seu plano</h2>
+      <p class="section-sub">Selecione o período que preferir. Os valores abaixo são os preços definidos para esta página demonstrativa.</p>
+      <div class="plan-grid">
+        <article class="plan"><h3>Mensal</h3><div class="price">R$ 30<small> / mês</small></div><p>Para começar e experimentar a proposta.</p><ul><li>Acesso durante 1 mês</li><li>Renovação mensal, conforme contratação</li><li>Flexibilidade para escolher outro plano depois</li></ul><button class="btn" onclick="escolherPlano('Mensal — R$ 30')">Escolher mensal</button></article>
+        <article class="plan featured"><div class="ribbon">Ótima opção</div><h3>Semestral</h3><div class="price">R$ 170<small> / 6 meses</small></div><p>Uma opção para quem quer um período maior.</p><ul><li>Acesso durante 6 meses</li><li>Valor equivalente a cerca de R$ 28,33 por mês</li><li>Mais tempo para aproveitar a experiência</li></ul><button class="btn" onclick="escolherPlano('Semestral — R$ 170')">Escolher semestral</button></article>
+        <article class="plan"><h3>Anual</h3><div class="price">R$ 300<small> / ano</small></div><p>Para quem prefere planejar o ano inteiro.</p><ul><li>Acesso durante 12 meses</li><li>Valor equivalente a R$ 25 por mês</li><li>Um único período de assinatura anual</li></ul><button class="btn" onclick="escolherPlano('Anual — R$ 300')">Escolher anual</button></article>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-top:22px">Página demonstrativa: os botões ainda não processam pagamentos nem ativam assinaturas.</p>
+    </div>
+  </section>
+
+  <section id="duvidas">
+    <div class="wrap">
+      <h2 class="section-title">Dúvidas frequentes</h2>
+      <p class="section-sub">Informações importantes antes de escolher um plano.</p>
+      <div class="faq">
+        <details><summary>O que é a MecFlix?</summary><p>É o conceito de um serviço de streaming apresentado nesta página, com planos mensal, semestral e anual.</p></details>
+        <details><summary>Como faço para assinar?</summary><p>Escolha um dos planos. Nesta versão demonstrativa, o botão apenas mostra o plano selecionado; será necessário integrar um sistema de pagamento e cadastro para receber assinaturas de verdade.</p></details>
+        <details><summary>Posso assistir no celular?</summary><p>A página funciona em celulares e computadores. A reprodução de filmes e séries depende da existência de um aplicativo ou plataforma de streaming real.</p></details>
+        <details><summary>O catálogo já está disponível?</summary><p>As imagens desta demonstração são ilustrativas. Antes de divulgar um serviço real, é necessário definir o catálogo e garantir os direitos de exibição dos conteúdos.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><strong class="logo">Mec<span>Flix</span></strong><p>Entre no clima. Dê o play.</p><p>© 2026 MecFlix. Página demonstrativa.</p></div></footer>
+<script>
+  function escolherPlano(plano){
+    alert("Você escolheu: " + plano + ". Esta é uma demonstração; o pagamento e a assinatura ainda não estão conectados.");
+  }
+</script>
+</body>
+</html>
