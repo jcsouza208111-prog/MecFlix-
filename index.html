@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -207,6 +207,15 @@
   function escolherPlano(plano){
     alert("Você escolheu: " + plano + ". Esta é uma demonstração; o pagamento e a assinatura ainda não estão conectados.");
   }
+function filtrarCatalogo(categoria) {
+  document.querySelectorAll(".movie").forEach(movie => {
+    movie.classList.toggle(
+      "hidden",
+      categoria !== "todos" &&
+      movie.dataset.categoria !== categoria
+    );
+  });
+}
 </script>
 </body>
 </html>
