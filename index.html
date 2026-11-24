@@ -86,7 +86,115 @@
 
 .navlinks a:hover {
   color: var(--red);
-} </style>
+}/* NOVA INTERFACE MECFLIX */
+
+/* Cabeçalho */
+header {
+  background: rgba(5, 6, 12, 0.96);
+  border-bottom: 1px solid rgba(237, 35, 72, 0.25);
+}
+
+.logo {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.navlinks a {
+  transition: 0.3s;
+}
+
+.navlinks a:hover {
+  color: var(--red);
+}
+
+/* Página inicial */
+.hero {
+  min-height: 650px;
+  background:
+    linear-gradient(90deg, #05060c 5%, rgba(5,6,12,.88) 45%, rgba(5,6,12,.25) 100%),
+    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  text-shadow: 0 5px 25px rgba(0,0,0,.6);
+}
+
+/* Botões */
+.btn {
+  border-radius: 6px;
+  box-shadow: 0 5px 18px rgba(237,35,72,.18);
+  transition: .3s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 8px 25px rgba(237,35,72,.35);
+}
+
+/* Cartões de destaque */
+.feature {
+  border-radius: 16px;
+  background: linear-gradient(145deg, #171b2b, #0e111c);
+  transition: .3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-8px);
+  border-color: var(--red);
+}
+
+/* Catálogo */
+.catalog {
+  background: linear-gradient(180deg, #0d101b, #080a12);
+}
+
+.movie {
+  border-radius: 14px;
+  transition: .3s ease;
+}
+
+.movie:hover {
+  transform: translateY(-6px);
+  border-color: var(--red);
+  box-shadow: 0 12px 30px rgba(0,0,0,.4);
+}
+
+/* Planos */
+.plan {
+  border-radius: 18px;
+  transition: .3s ease;
+}
+
+.plan:hover {
+  border-color: var(--red);
+  transform: translateY(-5px);
+}
+
+/* Títulos das seções */
+.section-title {
+  letter-spacing: -1px;
+}
+
+.section-sub {
+  line-height: 1.8;
+}
+
+/* Celulares */
+@media (max-width: 760px) {
+  .hero {
+    min-height: 540px;
+  }
+
+  .hero-content {
+    padding: 60px 0;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+}
+  </style>
 </head>
 <body>
 <header>
