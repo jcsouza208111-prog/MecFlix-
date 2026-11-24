@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -55,10 +55,41 @@ a<!DOCTYPE html>
     .movie.hidden {
   display: none;
     }
-  </style>
+ /* Animações do MecFlix */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  animation: aparecer 0.9s ease;
+}
+
+.feature {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 30px rgba(237, 35, 72, 0.15);
+}
+
+.navlinks a {
+  transition: color 0.3s;
+}
+
+.navlinks a:hover {
+  color: var(--red);
+} </style>
 </head>
 <body>
-<header>um
+<header>
   <nav class="wrap">
     <a class="logo" href="#inicio">Mec<span>Flix</span></a>
     <div class="navlinks"><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#duvidas">Dúvidas</a></div>
