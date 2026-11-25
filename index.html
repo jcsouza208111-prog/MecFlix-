@@ -255,6 +255,43 @@ footer {
     font-size: 1.5rem;
   }
 }
+}/* JANELA DO TRAILER */
+.trailer-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.trailer-conteudo {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.trailer-conteudo iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.fechar-trailer {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: #e50914;
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 5px 12px;
+  cursor: pointer;
+  border-radius: 5px;
 }
   </style>
 </head>
