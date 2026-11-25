@@ -551,8 +551,35 @@ const novosTitulos = [
 ];
 
 const catalogo = document.querySelector(".movies");
-
 novosTitulos.forEach(([titulo, categoria, poster]) => {
+  const card = document.createElement("article");
+  card.className = "movie";
+  card.dataset.categoria = categoria;
+
+  const imagem = document.createElement("img");
+  imagem.src = "https://image.tmdb.org/t/p/w500/" + poster;
+  imagem.alt = titulo;
+  imagem.loading = "lazy";
+
+  imagem.onerror = function() {
+    this.src = "https://placehold.co/500x750/181818/ffffff?text=" +
+      encodeURIComponent(titulo);
+  };
+
+  const info = document.createElement("div");
+  info.className = "movie-info";
+
+  const tag = document.createElement("span");
+  tag.className = "tag";
+  tag.textContent = categoria.toUpperCase();
+
+  const nome = document.createElement("strong");
+  nome.textContent = titulo;
+
+  info.append(tag, nome);
+  card.append(imagem, info);
+  catalogo.appendChild(card);
+});
   const card = document.createElement("article");
   card.className = "movie";
   card.dataset.categoria = categoria;
