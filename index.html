@@ -622,7 +622,65 @@ const novosTitulos = [
   ["Mob Psycho 100","anime","6t5gW8qW7Yb4G6.jpg"]
 ];
 
-const catalogo = document.querySelector(".movies");
+const catalogo = document.querySelector(".movies");const trailerIds = {
+  "Duna: Parte Dois": "",
+  "Oppenheimer": "",
+  "Barbie": "",
+  "Top Gun: Maverick": "",
+  "Avatar: O Caminho da Água": "",
+  "Guardiões da Galáxia 3": "",
+  "John Wick 4": "",
+  "Super Mario Bros.": "",
+  "Coringa": "",
+  "Deadpool": "",
+  "Vingadores: Guerra Infinita": "",
+  "Jurassic World": "",
+  "Matrix": "",
+  "A Origem": "",
+  "Os Incríveis": "",
+  "Coco": "",
+  "Thor: Ragnarok": "",
+  "Wandinha": "",
+  "The Last of Us": "",
+  "A Casa do Dragão": "",
+  "Loki": "",
+  "O Mandaloriano": "",
+  "Peaky Blinders": "",
+  "The Office": "",
+  "Better Call Saul": "",
+  "Sherlock": "",
+  "The Crown": "",
+  "Black Mirror": "",
+  "Arcane": "",
+  "Chernobyl": "",
+  "Prison Break": "",
+  "Round 6": "",
+  "The Umbrella Academy": "",
+  "Vikings": "",
+  "Euphoria": "",
+  "Supernatural": "",
+  "The 100": "",
+  "Attack on Titan": "",
+  "Demon Slayer": "",
+  "Death Note": "",
+  "My Hero Academia": "",
+  "One Punch Man": "",
+  "Hunter x Hunter": "",
+  "Fullmetal Alchemist": "",
+  "Bleach": "",
+  "Spy x Family": "",
+  "Chainsaw Man": "",
+  "Haikyuu!!": "",
+  "Blue Lock": "",
+  "JoJo's Bizarre Adventure": "",
+  "Vinland Saga": "",
+  "Dr. Stone": "",
+  "Black Clover": "",
+  "Tokyo Revengers": "",
+  "Pokémon": "",
+  "Sailor Moon": "",
+  "Mob Psycho 100": ""
+};
 
 novosTitulos.forEach(([titulo, categoria, poster]) => {
   const card = document.createElement("article");
@@ -662,12 +720,13 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   card.append(imagem, info);
 
   card.onclick = function() {
-    const pesquisa = titulo + " trailer oficial";
-    const link = "https://www.youtube.com/results?search_query=" +
-      encodeURIComponent(pesquisa);
-
-    window.open(link, "_blank");
-  };
+  if (trailerIds[titulo]) {
+    abrirTrailer(trailerIds[titulo]);
+  } else {
+    const busca = encodeURIComponent(titulo + " trailer oficial");
+    window.open("https://www.youtube.com/results?search_query=" + busca, "_blank");
+  }
+};
 
   catalogo.appendChild(card);
 });
