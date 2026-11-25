@@ -716,7 +716,65 @@ card.onclick = function() {
   buscarTrailer(titulo, categoria);
 };
   catalogo.appendChild(card);
-});
+});// ===== SISTEMA DE AVALIAÇÃO MECFLIX =====
+
+function adicionarAvaliacoes() {
+  document.querySelectorAll(".movie").forEach(card => {
+    if (card.querySelector(".avaliacao-publico")) return;
+
+    const titulo = card.querySelector("strong")?.textContent.trim();
+    const categoria = card.dataset.categoria;
+
+    if (!titulo) return;
+
+    const chave = `mecflix_nota_${categoria}_${titulo}`;
+
+    const area = document.createElement("div");
+    area.className = "avaliacao-publico";
+
+    const notaSalva = Number(localStorage.getItem(chave)) || 0;
+
+    area.innerHTML = `
+      <div class="nota-texto">Avalie este título:</div>
+      <div class="estrelas">
+        ${[1, 2, 3, 4, 5].map(n => `
+          <button class="estrela" data-nota="${n}" title="${n} estrelas">★</button>
+        `).join("")}
+      </div>
+      <div class="sua-nota"></div>
+    `;
+
+    const botoes = area.querySelectorAll(".estrela");
+    const textoNota = area.querySelector(".sua-nota");
+
+    function atualizarEstrelas(nota) {
+      botoes.forEach(botao => {
+        botao.classList.toggle(
+          "selecionada",
+          Number(botao.dataset.nota) <= nota
+        );
+      });
+
+      textoNota.textContent = nota
+        ? `Sua nota: ${nota} de 5 estrelas`
+        : "";
+    }
+
+    botoes.forEach(botao => {
+      botao.addEventListener("click", () => {
+        const nota = Number(botao.dataset.nota);
+        localStorage.setItem(chave, nota);
+        atualizarEstrelas(nota);
+      });
+    });
+
+    atualizarEstrelas(notaSalva);
+    card.appendChild(area);
+  });
+}
+
+adicionarAvaliacoes();
+  
 function abrirTrailer(videoId) {
   const modal = document.getElementById("trailerModal");
   const video = document.getElementById("trailerVideo");
