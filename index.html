@@ -622,66 +622,59 @@ const novosTitulos = [
   ["Mob Psycho 100","anime","6t5gW8qW7Yb4G6.jpg"]
 ];
 
-const catalogo = document.querySelector(".movies");const trailerIds = {
-  "Duna: Parte Dois": "",
-  "Oppenheimer": "",
-  "Barbie": "",
-  "Top Gun: Maverick": "",
-  "Avatar: O Caminho da Água": "",
-  "Guardiões da Galáxia 3": "",
-  "John Wick 4": "",
-  "Super Mario Bros.": "",
-  "Coringa": "",
-  "Deadpool": "",
-  "Vingadores: Guerra Infinita": "",
-  "Jurassic World": "",
-  "Matrix": "",
-  "A Origem": "",
-  "Os Incríveis": "",
-  "Coco": "",
-  "Thor: Ragnarok": "",
-  "Wandinha": "",
-  "The Last of Us": "",
-  "A Casa do Dragão": "",
-  "Loki": "",
-  "O Mandaloriano": "",
-  "Peaky Blinders": "",
-  "The Office": "",
-  "Better Call Saul": "",
-  "Sherlock": "",
-  "The Crown": "",
-  "Black Mirror": "",
-  "Arcane": "",
-  "Chernobyl": "",
-  "Prison Break": "",
-  "Round 6": "",
-  "The Umbrella Academy": "",
-  "Vikings": "",
-  "Euphoria": "",
-  "Supernatural": "",
-  "The 100": "",
-  "Attack on Titan": "",
-  "Demon Slayer": "",
-  "Death Note": "",
-  "My Hero Academia": "",
-  "One Punch Man": "",
-  "Hunter x Hunter": "",
-  "Fullmetal Alchemist": "",
-  "Bleach": "",
-  "Spy x Family": "",
-  "Chainsaw Man": "",
-  "Haikyuu!!": "",
-  "Blue Lock": "",
-  "JoJo's Bizarre Adventure": "",
-  "Vinland Saga": "",
-  "Dr. Stone": "",
-  "Black Clover": "",
-  "Tokyo Revengers": "",
-  "Pokémon": "",
-  "Sailor Moon": "",
-  "Mob Psycho 100": ""
-};
+const catalogo = document.querySelector(".movies");
+ const TMDB_API_KEY = 60d7b522a73a954e98bdcac01b133a87";
 
+async function buscarTrailer(titulo, categoria) {
+  const tipo = categoria === "filme" ? "movie" : "tv";
+
+  try {
+    const busca = await fetch(
+      `https://api.themoviedb.org/3/search/${tipo}?api_key=${TMDB_API_KEY}&language=pt-BR&query=${encodeURIComponent(titulo)}`
+    );
+
+    const dados = await busca.json();
+
+    if (!dados.results || dados.results.length === 0) {
+      alert("Título não encontrado.");
+      return;
+    }
+
+    const id = dados.results[0].id;
+
+    let resposta = await fetch(
+      `https://api.themoviedb.org/3/${tipo}/${id}/videos?api_key=${TMDB_API_KEY}&language=pt-BR`
+    );
+
+    let videos = await resposta.json();
+
+    let trailer = videos.results.find(
+      v => v.site === "YouTube" && v.type === "Trailer"
+    );
+
+    if (!trailer) {
+      resposta = await fetch(
+        `https://api.themoviedb.org/3/${tipo}/${id}/videos?api_key=${TMDB_API_KEY}&language=en-US`
+      );
+
+      videos = await resposta.json();
+
+      trailer = videos.results.find(
+        v => v.site === "YouTube" && v.type === "Trailer"
+      );
+    }
+
+    if (trailer) {
+      abrirTrailer(trailer.key);
+    } else {
+      alert("Trailer não encontrado.");
+    }
+
+  } catch (erro) {
+    alert("Erro ao procurar o trailer.");
+    console.error(erro);
+  }
+}
 novosTitulos.forEach(([titulo, categoria, poster]) => {
   const card = document.createElement("article");
   card.className = "movie";
@@ -720,11 +713,7 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   card.append(imagem, info);
 
 card.onclick = function() {
-  if (trailerIds[titulo]) {
-    abrirTrailer(trailerIds[titulo]);
-  } else {
-    alert("Trailer ainda não cadastrado.");
-  }
+  buscarTrailer(titulo, categoria);
 };
   catalogo.appendChild(card);
 });
