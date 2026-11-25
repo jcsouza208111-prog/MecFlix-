@@ -578,7 +578,7 @@ const novosTitulos = [
 
 ];
 
-const catalogo = document.querySelector(".movies");
+const catalogo = document.querySelector(".movies") || document.getElementById("catalogo");
  const TMDB_API_KEY = "60d7b522a73a954e98bdcac01b133a87";
 
 async function buscarTrailer(titulo, categoria) {
