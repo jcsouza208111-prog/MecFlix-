@@ -648,15 +648,48 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   card.dataset.categoria = categoria;
   card.style.cursor = "pointer";
 
-  const imagem = document.createElement("img");
-  imagem.src = "https://image.tmdb.org/t/p/w500/" + poster;
-  imagem.alt = titulo;
-  imagem.loading = "lazy";
+ const imagem = document.createElement("img");
+imagem.src = "https://image.tmdb.org/t/p/w500/" + poster;
+imagem.alt = titulo;
+imagem.loading = "lazy";
 
-  imagem.onerror = function() {
-    this.src = "https://placehold.co/500x750/181818/ffffff?text=" +
-      encodeURIComponent(titulo);
-  };
+// Corrigir automaticamente as capas que estão quebradas
+const capasParaCorrigir = [
+  "Bleach",
+  "JoJo's Bizarre Adventure",
+  "Vinland Saga",
+  "Dr. Stone",
+  "Black Clover",
+  "Tokyo Revengers"
+];
+
+if (capasParaCorrigir.includes(titulo)) {
+  fetch(
+    `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=pt-BR&query=${encodeURIComponent(titulo)}`
+  )
+    .then(res => res.json())
+    .then(dados => {
+      if (dados.results && dados.results.length > 0) {
+        const resultado =
+          dados.results.find(r =>
+            r.name.toLowerCase() === titulo.toLowerCase() ||
+            r.original_name.toLowerCase() === titulo.toLowerCase()
+          ) || dados.results[0];
+
+        if (resultado.poster_path) {
+          imagem.src =
+            "https://image.tmdb.org/t/p/w500" +
+            resultado.poster_path;
+        }
+      }
+    })
+    .catch(erro => console.error("Erro ao buscar capa:", titulo, erro));
+}
+
+imagem.onerror = function() {
+  this.src = "https://placehold.co/500x750/181818/ffffff?text=" +
+    encodeURIComponent(titulo);
+};
 
   const info = document.createElement("div");
   info.className = "movie-info";
