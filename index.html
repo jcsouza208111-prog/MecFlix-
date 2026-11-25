@@ -628,6 +628,7 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   const card = document.createElement("article");
   card.className = "movie";
   card.dataset.categoria = categoria;
+  card.style.cursor = "pointer";
 
   const imagem = document.createElement("img");
   imagem.src = "https://image.tmdb.org/t/p/w500/" + poster;
@@ -649,8 +650,25 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   const nome = document.createElement("strong");
   nome.textContent = titulo;
 
-  info.append(tag, nome);
+  const trailer = document.createElement("span");
+  trailer.textContent = "▶ ASSISTIR TRAILER";
+  trailer.style.display = "block";
+  trailer.style.marginTop = "8px";
+  trailer.style.color = "#e50914";
+  trailer.style.fontWeight = "bold";
+  trailer.style.fontSize = "13px";
+
+  info.append(tag, nome, trailer);
   card.append(imagem, info);
+
+  card.onclick = function() {
+    const pesquisa = titulo + " trailer oficial";
+    const link = "https://www.youtube.com/results?search_query=" +
+      encodeURIComponent(pesquisa);
+
+    window.open(link, "_blank");
+  };
+
   catalogo.appendChild(card);
 });
 function abrirTrailer(videoId) {
