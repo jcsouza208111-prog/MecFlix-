@@ -467,17 +467,21 @@ footer {
 <script>
   function escolherPlano(plano){
     alert("Você escolheu: " + plano + ". Esta é uma demonstração; o pagamento e a assinatura ainda não estão conectados.");
-  }
-function filtrarCatalogo(categoria) {
-  document.querySelectorAll(".movie").forEach(movie => {
-    movie.classList.toggle(
-      "hidden",
-      categoria !== "todos" &&
-      movie.dataset.categoria !== categoria
-    );
-  });
-}
   
+window.filtrarCatalogo = function(categoria) {
+  const filmes = document.querySelectorAll(".movies .movie");
+
+  filmes.forEach(function(filme) {
+    const tipo = filme.getAttribute("data-categoria");
+
+    if (categoria === "todos" || tipo === categoria) {
+      filme.classList.remove("hidden");
+    } else {
+      filme.classList.add("hidden");
+    }
+  });
+};
+    
 // ===== MAIS 20 FILMES, 20 SÉRIES E 20 ANIMES =====
 
 const novosTitulos = [
@@ -577,8 +581,7 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   info.append(tag, nome);
   card.append(imagem, info);
   catalogo.appendChild(card);
-);
-  }
+});
 </script>
 </body>
 </html>
