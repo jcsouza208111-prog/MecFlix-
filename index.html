@@ -719,15 +719,13 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   info.append(tag, nome, trailer);
   card.append(imagem, info);
 
-  card.onclick = function() {
+card.onclick = function() {
   if (trailerIds[titulo]) {
     abrirTrailer(trailerIds[titulo]);
   } else {
-    const busca = encodeURIComponent(titulo + " trailer oficial");
-    window.open("https://www.youtube.com/results?search_query=" + busca, "_blank");
+    alert("Trailer ainda não cadastrado.");
   }
 };
-
   catalogo.appendChild(card);
 });
 function abrirTrailer(videoId) {
