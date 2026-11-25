@@ -469,6 +469,8 @@ footer {
     alert("Você escolheu: " + plano + ". Esta é uma demonstração; o pagamento e a assinatura ainda não estão conectados.");
   }
 window.filtrarCatalogo = function(categoria) {
+  alert("Filtro acionado: " + categoria);
+  
   const filmes = document.querySelectorAll(".movies .movie");
 
   filmes.forEach(function(filme) {
