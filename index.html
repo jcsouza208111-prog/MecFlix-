@@ -633,7 +633,21 @@ novosTitulos.forEach(([titulo, categoria, poster]) => {
   card.append(imagem, info);
   catalogo.appendChild(card);
 });
+function abrirTrailer(videoId) {
+  const modal = document.getElementById("trailerModal");
+  const video = document.getElementById("trailerVideo");
 
+  video.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1";
+  modal.style.display = "flex";
+}
+
+function fecharTrailer() {
+  const modal = document.getElementById("trailerModal");
+  const video = document.getElementById("trailerVideo");
+
+  video.src = "";
+  modal.style.display = "none";
+}
 </script>
 </body>
 </html>
