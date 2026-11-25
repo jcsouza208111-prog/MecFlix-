@@ -355,73 +355,6 @@ footer {
   <button onclick="filtrarCatalogo('serie')">Séries</button>
   <button onclick="filtrarCatalogo('anime')">Animes</button>
       </div>
-      <p class="section-sub">Estes são exemplos visuais de gêneros que podem fazer parte da experiência MecFlix. Os títulos abaixo são categorias ilustrativas, não um catálogo confirmado.</p>
-      <div class="movies">
-<article class="movie" data-categoria="filme" onclick="abrirTrailer('mbbPSq63yuM')">
-  <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interestelar">
-  <div class="movie-info"><span class="tag">FILME</span><strong>Interestelar</strong></div>
-</article>
-        
-<article class="movie" data-categoria="filme" onclick="abrirTrailer('HiAzj9HZQnE')">
-  <img src="https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg" alt="Vingadores: Ultimato">
-  <div class="movie-info"><span class="tag">FILME</span><strong>Vingadores: Ultimato</strong></div>
-</article>
-
-<article class="movie" data-categoria="filme" onclick="abrirTrailer('zg8pHQrxlfY')">
-  <img src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="Homem-Aranha: Sem Volta Para Casa">
-  <div class="movie-info"><span class="tag">FILME</span><strong>Homem-Aranha: Sem Volta Para Casa</strong></div>
-</article>
-        
-<article class="movie" data-categoria="filme" onclick="abrirTrailer('4T7J-U0lacY')">
-  <img src="https://image.tmdb.org/t/p/w500/wd7b4Nv9QBHDTIjc2m7sr0IUMoh.jpg" alt="Batman">
-  <div class="movie-info"><span class="tag">FILME</span><strong>Batman</strong></div>
-</article>
-
-<!-- SÉRIES -->
-<article class="movie" data-categoria="serie" onclick="abrirTrailer('LgFOjRR9uac')">
- <img src="https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg" alt="Stranger Things">
-  <div class="movie-info"><span class="tag">SÉRIE</span><strong>Stranger Things</strong></div>
-</article>
-
-<article class="movie" data-categoria="serie" onclick="abrirTrailer('EzFXDvC-EwM')">
-  <img src="https://image.tmdb.org/t/p/w500/reKs8y4mPwPkZG99ZpbKRhBPKsX.jpg" alt="The Walking Dead">
-  <div class="movie-info"><span class="tag">SÉRIE</span><strong>The Walking Dead</strong></div>
-</article>
-
-<article class="movie" data-categoria="serie">
-  <img src="https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg" alt="Breaking Bad">
-  <div class="movie-info"><span class="tag">SÉRIE</span><strong>Breaking Bad</strong></div>
-</article>
-
-<article class="movie" data-categoria="serie">
-  <img src="https://image.tmdb.org/t/p/w500/stTEycfG9928HYGEISBFaG1ngjM.jpg" alt="The Boys">
-  <div class="movie-info"><span class="tag">SÉRIE</span><strong>The Boys</strong></div>
-</article>
-        
-<!-- ANIMES -->
-
-<article class="movie" data-categoria="anime">
-  <img src="https://image.tmdb.org/t/p/w500/8R1mMSC1gX1cg5ed7ns49JOEqw3.jpg" alt="Jujutsu Kaisen">
-  <div class="movie-info"><span class="tag">ANIME</span><strong>Jujutsu Kaisen</strong></div>
-</article>
-
-<article class="movie" data-categoria="anime">
-  <img src="https://image.tmdb.org/t/p/w500/kbkuYkaFsDwL6cyMgnBf77LczEo.jpg" alt="Dragon Ball Z">
-  <div class="movie-info"><span class="tag">ANIME</span><strong>Dragon Ball Z</strong></div>
-</article>
-
-<article class="movie" data-categoria="anime">
-  <img src="https://image.tmdb.org/t/p/w500/9ptbVZpKNy5NY9D4zq4KGiYWRQY.jpg" alt="Naruto">
-  <div class="movie-info"><span class="tag">ANIME</span><strong>Naruto</strong></div>
-</article>
-
-<article class="movie" data-categoria="anime">
-  <img src="https://image.tmdb.org/t/p/w500/mOrmYBUH7YfMBkSgGKXya13Xmbm.jpg" alt="One Piece">
-  <div class="movie-info"><span class="tag">ANIME</span><strong>One Piece</strong></div>
-</article>
-         </div>
-    </div>
-  </section>
 
 <!-- JANELA DO TRAILER -->
 <div id="trailerModal" class="trailer-modal">
@@ -555,71 +488,94 @@ window.filtrarCatalogo = function(categoria) {
 };
     
 // ===== MAIS 20 FILMES, 20 SÉRIES E 20 ANIMES =====
-
 const novosTitulos = [
+
+  // =========================
   // FILMES
-  ["Duna: Parte Dois","filme","1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"],
-  ["Oppenheimer","filme","ptpr0kGAckfQkJeJIt8st5dglvd.jpg"],
-  ["Barbie","filme","iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg"],
-  ["Top Gun: Maverick","filme","62HCnUTziyWcpDaBO2i1DX17ljH.jpg"],
-  ["Avatar: O Caminho da Água","filme","t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"],
-  ["Guardiões da Galáxia 3","filme","r2J02Z2OpNTctfOSN1Ydgii51I3.jpg"],
-  ["John Wick 4","filme","vZloFAK7NmvMGKE7VkF5UHaz0I.jpg"],
-  ["Super Mario Bros.","filme","qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg"],
-  ["Coringa","filme","udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"],
-  ["Deadpool","filme","fSRb7vyIP8rQpL0I47P3qUsEKX3.jpg"],
-  ["Vingadores: Guerra Infinita","filme","7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"],
-  ["Jurassic World","filme","A0LZHXUzo5C60Oahvt7VxvwuzHw.jpg"],
-  ["Matrix","filme","f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"],
-  ["A Origem","filme","oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"],
-  ["Os Incríveis","filme","2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg"],
-  ["Coco","filme","gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg"],
-  ["Thor: Ragnarok","filme","rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"],
-  ["Batman","filme","74xTEgt7R36Fpooo50r9T25onhq.jpg"],
+  // =========================
 
+  ["Duna: Parte Dois", "filme", "1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"],
+  ["Oppenheimer", "filme", "ptpr0kGAckfQkJeJIt8st5dglvd.jpg"],
+  ["Barbie", "filme", "iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg"],
+  ["Top Gun: Maverick", "filme", "62HCnUTziyWcpDaBO2i1DX17ljH.jpg"],
+  ["Avatar: O Caminho da Água", "filme", "t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"],
+  ["Guardiões da Galáxia 3", "filme", "r2J02Z2OpNTctfOSN1Ydgii51I3.jpg"],
+  ["John Wick 4", "filme", "vZloFAK7NmvMGKE7VkF5UHaz0I.jpg"],
+  ["Super Mario Bros.", "filme", "qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg"],
+  ["Coringa", "filme", "udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"],
+  ["Deadpool", "filme", "fSRb7vyIP8rQpL0I47P3qUsEKX3.jpg"],
+  ["Vingadores: Guerra Infinita", "filme", "7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"],
+  ["Jurassic World", "filme", "A0LZHXUzo5C60Oahvt7VxvwuzHw.jpg"],
+  ["Matrix", "filme", "f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"],
+  ["A Origem", "filme", "oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"],
+  ["Os Incríveis", "filme", "2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg"],
+  ["Coco", "filme", "gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg"],
+  ["Thor: Ragnarok", "filme", "rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"],
+  ["Batman", "filme", "wd7b4Nv9QBHDTIjc2m7sr0IUMoh.jpg"],
+  ["Interestelar", "filme", "gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"],
+  ["Vingadores: Ultimato", "filme", "ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg"],
+  ["Homem-Aranha: Sem Volta Para Casa", "filme", "1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"],
+
+
+  // =========================
   // SÉRIES
-  ["Wandinha","serie","9PFonBhy4cQy7Jz20NpMygczOkv.jpg"],
-  ["The Last of Us","serie","uKvVjHNqB5VmOril4KVefagPEtW.jpg"],
-  ["A Casa do Dragão","serie","z2yahl2uefxDCl0nogcRBstwruJ.jpg"],
-  ["Loki","serie","voHUJun1p2Uji9WlPL2wP5s5n6.jpg"],
-  ["O Mandaloriano","serie","eU1i6eHXlzMOlEv0o4uQh6f2gob.jpg"],
-  ["Peaky Blinders","serie","vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg"],
-  ["The Office","serie","qWnJzyZhyy74gjpSjIXWmuk0ifX.jpg"],
-  ["Better Call Saul","serie","fC2HDm5t0kHl7mTm7jxMR31b7by.jpg"],
-  ["Sherlock","serie","7WTsnHkbA0FaG6R9twfFde0I9P0.jpg"],
-  ["The Crown","serie","1M876KPjulVwppEpldhdc8V4o68.jpg"],
-  ["Black Mirror","serie","7PRddO7z7mcPi21nZTCMGShAyy1.jpg"],
-  ["Arcane","serie","fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg"],
-  ["Chernobyl","serie","hlLXt2tOPT6RRnje1j9s7g3z9k.jpg"],
-  ["Prison Break","serie","5E1BhkCgjhVIVqkaKVlVGkVcZIW.jpg"],
-  ["Round 6","serie","1QdXdRYfktUSONkl1oD5gc6Be0s.jpg"],
-  ["The Umbrella Academy","serie","scZlQQYnDVlnpxFTxaIv2g0BWnL.jpg"],
-  ["Vikings","serie","bQLrHIRNEkE3PdIWQrZHynQZazu.jpg"],
-  ["Euphoria","serie","jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg"],
-  ["Supernatural","serie","3iFm6Kz7iYoFaEcj4fLyZHAmTQA.jpg"],
-  ["The 100","serie","wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg"],
+  // =========================
 
+  ["Wandinha", "serie", "9PFonBhy4cQy7Jz20NpMygczOkv.jpg"],
+  ["The Last of Us", "serie", "uKvVjHNqB5VmOril4KVefagPEtW.jpg"],
+  ["A Casa do Dragão", "serie", "z2yahl2uefxDCl0nogcRBstwruJ.jpg"],
+  ["Loki", "serie", "voHUJun1p2Uji9WlPL2wP5s5n6.jpg"],
+  ["O Mandaloriano", "serie", "eU1i6eHXlzMOlEv0o4uQh6f2gob.jpg"],
+  ["Peaky Blinders", "serie", "vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg"],
+  ["The Office", "serie", "qWnJzyZhyy74gjpSjIXWmuk0ifX.jpg"],
+  ["Better Call Saul", "serie", "fC2HDm5t0kHl7mTm7jxMR31b7by.jpg"],
+  ["Sherlock", "serie", "7WTsnHkbA0FaG6R9twfFde0I9P0.jpg"],
+  ["The Crown", "serie", "1M876KPjulVwppEpldhdc8V4o68.jpg"],
+  ["Black Mirror", "serie", "7PRddO7z7mcPi21nZTCMGShAyy1.jpg"],
+  ["Arcane", "serie", "fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg"],
+  ["Chernobyl", "serie", "hlLXt2tOPT6RRnje1j9s7g3z9k.jpg"],
+  ["Prison Break", "serie", "5E1BhkCgjhVIVqkaKVlVGkVcZIW.jpg"],
+  ["Round 6", "serie", "1QdXdRYfktUSONkl1oD5gc6Be0s.jpg"],
+  ["The Umbrella Academy", "serie", "scZlQQYnDVlnpxFTxaIv2g0BWnL.jpg"],
+  ["Vikings", "serie", "bQLrHIRNEkE3PdIWQrZHynQZazu.jpg"],
+  ["Euphoria", "serie", "jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg"],
+  ["Supernatural", "serie", "3iFm6Kz7iYoFaEcj4fLyZHAmTQA.jpg"],
+  ["The 100", "serie", "wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg"],
+  ["Stranger Things", "serie", "x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg"],
+  ["The Walking Dead", "serie", "reKs8y4mPwPkZG99ZibKRhBPKsX.jpg"],
+  ["Breaking Bad", "serie", "ggFHVNu6YYI5L9pCfOacjizRGt.jpg"],
+  ["The Boys", "serie", "stTEycfG9928HYGEISBFaG1ngjM.jpg"],
+
+
+  // =========================
   // ANIMES
-  ["Attack on Titan","anime","hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg"],
-  ["Demon Slayer","anime","xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg"],
-  ["Death Note","anime","tCZFfYTIwrR7n94J6G14Y4hAFU6.jpg"],
-  ["My Hero Academia","anime","phuYuzqWW9ru8EA3HVjE9W6k9.jpg"],
-  ["One Punch Man","anime","iE3s0lG5QVdEHOEZnoAxjmMtvne.jpg"],
-  ["Hunter x Hunter","anime","ucpgmUR1h5Te1BYegKItoPjOeF7.jpg"],
-  ["Fullmetal Alchemist","anime","5ZFUEOULaVml7pQuXxhpR2SmVUw.jpg"],
- ["Bleach","anime","2Eewgp7o5AU1xCataDmiIL2nYxd.jpg"],
-  ["Spy x Family","anime","3r4LYFuXrg3G8fepysr4xSLWnQL.jpg"],
-  ["Chainsaw Man","anime","npdB6eFzizki0WaZ1OvKcJrWe97.jpg"],
-  ["Haikyuu!!","anime","zZcs2J4q0pY4b6m.jpg"],
-  ["Blue Lock","anime","kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg"],
-  ["JoJo's Bizarre Adventure","anime","ogAWwbh3frWtiTyyXrZaVFtqC5P.jpg"],
-  ["Vinland Saga","anime","6dU7b6y7xYQ.jpg"],
-  ["Dr. Stone","anime","d3c9s6.jpg"],
-  ["Black Clover","anime","6YpZ9.jpg"],
-  ["Tokyo Revengers","anime","qvZ2iM9z5a9F9g7u8c1o9.jpg"],
-  ["Pokémon","anime","rOuGm07PxBhEsK9y1bJbFqXw5.jpg"],
-  ["Sailor Moon","anime","aWE6cZ4Q4x1r.jpg"],
-  ["Mob Psycho 100","anime","6t5gW8qW7Yb4G6.jpg"]
+  // =========================
+
+  ["Attack on Titan", "anime", "hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg"],
+  ["Demon Slayer", "anime", "xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg"],
+  ["Death Note", "anime", "tCZFfYTIwrR7n94J6G14Y4hAFU6.jpg"],
+  ["My Hero Academia", "anime", "phuYuzqWW9ru8EA3HVjE9W6k9.jpg"],
+  ["One Punch Man", "anime", "iE3s0lG5QVdEHOEZnoAxjmMtvne.jpg"],
+  ["Hunter x Hunter", "anime", "ucpgmUR1h5Te1BYegKItoPjOeF7.jpg"],
+  ["Fullmetal Alchemist", "anime", "5ZFUEOULaVml7pQuXxhpR2SmVUw.jpg"],
+  ["Bleach", "anime", "2Eewgp7o5AU1xCataDmiIL2nYxd.jpg"],
+  ["Spy x Family", "anime", "3r4LYFuXrg3G8fepysr4xSLWnQL.jpg"],
+  ["Chainsaw Man", "anime", "npdB6eFzizki0WaZ1OvKcJrWe97.jpg"],
+  ["Haikyuu!!", "anime", "zZcs2J4q0pY4b6m.jpg"],
+  ["Blue Lock", "anime", "kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg"],
+  ["JoJo's Bizarre Adventure", "anime", "ogAWwbh3frWtiTyyXrZaVFtqC5P.jpg"],
+  ["Vinland Saga", "anime", "6dU7b6y7xYQ.jpg"],
+  ["Dr. Stone", "anime", "d3c9s6.jpg"],
+  ["Black Clover", "anime", "6YpZ9.jpg"],
+  ["Tokyo Revengers", "anime", "qvZ2iM9z5a9F9g7u8c1o9.jpg"],
+  ["Pokémon", "anime", "rOuGm07PxBhEsK9y1bJbFqXw5.jpg"],
+  ["Sailor Moon", "anime", "aWE6cZ4Q4x1r.jpg"],
+  ["Mob Psycho 100", "anime", "6t5gW8qW7Yb4G6.jpg"],
+  ["Jujutsu Kaisen", "anime", "8R1mMSC1gX1cg5ed7ns49JOEqw3.jpg"],
+  ["Dragon Ball Z", "anime", "kbkuYkaFsDwL6cyMgnBf77LczEo.jpg"],
+  ["Naruto", "anime", "9ptbVZpKNy5NY9D4zq4KGiYWRQY.jpg"],
+  ["One Piece", "anime", "mOrmYBUH7YfMBkSgGKXya13Xmbm.jpg"]
+
 ];
 
 const catalogo = document.querySelector(".movies");
