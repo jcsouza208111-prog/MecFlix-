@@ -578,7 +578,18 @@ const novosTitulos = [
 
 ];
 
-const catalogo = document.querySelector(".movies") || document.getElementById("catalogo");
+let catalogo = document.querySelector(".movies");
+
+if (!catalogo) {
+  catalogo = document.createElement("div");
+  catalogo.className = "movies";
+
+  const filtros = document.querySelector("#catalogo .catalog-filters");
+
+  if (filtros) {
+    filtros.insertAdjacentElement("afterend", catalogo);
+  }
+}
  const TMDB_API_KEY = "60d7b522a73a954e98bdcac01b133a87";
 
 async function buscarTrailer(titulo, categoria) {
