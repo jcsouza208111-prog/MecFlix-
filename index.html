@@ -965,6 +965,130 @@ footer {
   .navlinks a {
     font-size: 12px;
   }
+}/* ===== NOVO BANNER CINEMATOGRÁFICO MECFLIX ===== */
+
+.hero-mecflix {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #090b14;
+}
+
+.hero-mecflix .hero-fundo {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      #090b14 0%,
+      rgba(9,11,20,.95) 25%,
+      rgba(9,11,20,.65) 55%,
+      rgba(9,11,20,.15) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #090b14 0%,
+      transparent 40%
+    ),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=85");
+
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.hero-mecflix .hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  max-width: 1400px;
+}
+
+.hero-mecflix .eyebrow {
+  color: #f5bd35;
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.hero-mecflix h1 {
+  max-width: 750px;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.08;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.hero-mecflix h1 span {
+  color: #f5bd35;
+}
+
+.hero-mecflix .lead {
+  max-width: 600px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #d1d1d1;
+  margin-bottom: 30px;
+}
+
+.hero-mecflix .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.hero-mecflix .actions .btn {
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: 800;
+  transition: .3s;
+}
+
+.hero-mecflix .actions .btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== BANNER NO CELULAR ===== */
+
+@media (max-width: 760px) {
+  .hero-mecflix {
+    min-height: 480px;
+  }
+
+  .hero-mecflix .hero-fundo {
+    background-position: center;
+    background-image:
+      linear-gradient(
+        0deg,
+        #090b14 0%,
+        rgba(9,11,20,.85) 50%,
+        rgba(9,11,20,.35) 100%
+      ),
+      url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=85");
+  }
+
+  .hero-mecflix .hero-content {
+    padding-top: 60px;
+    padding-bottom: 55px;
+  }
+
+  .hero-mecflix h1 {
+    font-size: 42px;
+  }
+
+  .hero-mecflix .lead {
+    font-size: 15px;
+  }
+
+  .hero-mecflix .actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
   </style>
 </head>
@@ -992,15 +1116,29 @@ footer {
   </nav>
 </header>
 <main>
-  <section class="hero" id="inicio">
-    <div class="wrap hero-content">
-      <div class="eyebrow">Entre no clima. Dê o play.</div>
-      <h1>Suas histórias favoritas em um só <span>lugar.</span></h1>
-      <p class="lead">Conheça a MecFlix: uma proposta de streaming para quem ama filmes, séries e boas histórias. Prepare a pipoca, escolha o que assistir e transforme qualquer momento em uma sessão especial.</p>
-      <div class="actions"><a class="btn" href="#planos">Conhecer os planos</a><a class="btn secondary" href="#catalogo">Explorar destaques</a></div>
-    </div>
-  </section>
+ <section class="hero hero-mecflix" id="inicio">
+  <div class="hero-fundo"></div>
 
+  <div class="wrap hero-content">
+    <div class="eyebrow">🎬 ENTRE NO CLIMA. DÊ O PLAY.</div>
+
+    <h1>
+      Suas histórias favoritas<br>
+      em um só <span>lugar.</span>
+    </h1>
+
+    <p class="lead">
+      Filmes, séries e animes para todos os momentos.
+      Descubra histórias incríveis, encontre seu próximo favorito
+      e prepare-se para uma experiência inesquecível.
+    </p>
+
+    <div class="actions">
+      <a class="btn" href="#catalogo">▶ Explorar catálogo</a>
+      <a class="btn secondary" href="#planos">Conhecer os planos</a>
+    </div>
+  </div>
+</section>
   <section>
     <div class="wrap">
       <h2 class="section-title">Seu entretenimento, do seu jeito</h2>
