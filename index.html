@@ -770,11 +770,66 @@ footer {
   height: 4px;
   background: #333;
 }
+/* ===== CONTINUAR ASSISTINDO DISCRETO ===== */
+
+section.continuar-assistindo {
+  padding: 20px 0;
+  margin: 0;
+  background: #080808;
+}
+
+.continuar-assistindo h2 {
+  color: #bbb;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.lista-continuar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 5px 2px 10px;
+}
+
+.item-continuar {
+  min-width: 95px;
+  max-width: 95px;
+  background: #111;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.item-continuar:hover {
+  transform: translateY(-2px);
+}
+
+.item-continuar img {
+  width: 100%;
+  height: 135px;
+  object-fit: cover;
+  display: block;
+}
+
+.item-continuar p {
+  padding: 5px;
+  margin: 0;
+  color: #ddd;
+  font-size: 10px;
+  text-align: center;
+}
+
+.item-continuar .barra-progresso {
+  height: 2px;
+  background: #333;
+}
 
 .item-continuar .barra-progresso div {
   height: 100%;
   width: 0%;
-  background: #f5bd35;
+  background: #777;
 }
     /* ===== CORREÇÃO DO CABEÇALHO NO CELULAR ===== */
 @media (max-width: 760px) {
@@ -1152,13 +1207,6 @@ footer {
   </section>
 
 </section>
-<!-- ===== CONTINUAR ASSISTINDO ===== -->
-<section class="continuar-assistindo" id="continuarAssistindo">
-  <div class="wrap">
-    <h2>▶ Continuar assistindo</h2>
-    <div class="lista-continuar" id="listaContinuar"></div>
-  </div>
-</section>
 <!-- ===== CATÁLOGO MECFLIX ===== -->
 <section class="catalog" id="catalogo">
   <div class="wrap">
@@ -1181,9 +1229,13 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- TV AO VIVO -->
-  
+<!-- ===== CONTINUAR ASSISTINDO ===== -->
+<section class="continuar-assistindo" id="continuarAssistindo">
+  <div class="wrap">
+    <h2>▶ Continuar assistindo</h2>
+    <div class="lista-continuar" id="listaContinuar"></div>
+  </div>
+</section>
 <!-- TV AO VIVO -->
 <section id="tv-ao-vivo" style="padding:50px 0;">
   <div class="wrap">
