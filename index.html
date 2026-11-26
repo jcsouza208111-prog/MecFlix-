@@ -645,6 +645,61 @@ footer {
 
 .btn-favorito:not(.favoritado) {
   color: white;
+}  /* ===== CONTINUAR ASSISTINDO MECFLIX ===== */
+
+.continuar-assistindo {
+  margin: 35px 0;
+}
+
+.continuar-assistindo h2 {
+  color: #f5bd35;
+  margin-bottom: 18px;
+}
+
+.lista-continuar {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 5px 20px;
+}
+
+.item-continuar {
+  min-width: 150px;
+  max-width: 150px;
+  background: #121625;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.item-continuar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(245, 189, 53, .25);
+}
+
+.item-continuar img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.item-continuar p {
+  padding: 8px;
+  color: white;
+  font-size: 13px;
+  text-align: center;
+}
+
+.item-continuar .barra-progresso {
+  height: 4px;
+  background: #333;
+}
+
+.item-continuar .barra-progresso div {
+  height: 100%;
+  width: 0%;
+  background: #f5bd35;
 }
   </style>
 </head>
@@ -840,62 +895,7 @@ footer {
   >🔍</button>
 </div>
 <script>
-  /* ===== CONTINUAR ASSISTINDO MECFLIX ===== */
 
-.continuar-assistindo {
-  margin: 35px 0;
-}
-
-.continuar-assistindo h2 {
-  color: #f5bd35;
-  margin-bottom: 18px;
-}
-
-.lista-continuar {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 10px 5px 20px;
-}
-
-.item-continuar {
-  min-width: 150px;
-  max-width: 150px;
-  background: #121625;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.item-continuar:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(245, 189, 53, .25);
-}
-
-.item-continuar img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.item-continuar p {
-  padding: 8px;
-  color: white;
-  font-size: 13px;
-  text-align: center;
-}
-
-.item-continuar .barra-progresso {
-  height: 4px;
-  background: #333;
-}
-
-.item-continuar .barra-progresso div {
-  height: 100%;
-  width: 0%;
-  background: #f5bd35;
-}
 // ===== HISTÓRICO CONTINUAR ASSISTINDO =====
 
 function salvarHistorico(titulo, categoria, poster) {
