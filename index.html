@@ -570,6 +570,81 @@ footer {
   .nav-mecflix .logo-img {
     width: 190px;
   }
+}/* ===== CARTAZES INTERATIVOS MECFLIX ===== */
+
+/* Transição suave nos cartazes */
+.movie {
+  transition: transform .3s ease, box-shadow .3s ease, border .3s ease;
+  cursor: pointer;
+}
+
+/* Efeito ao passar o mouse */
+.movie:hover {
+  transform: scale(1.06) translateY(-6px);
+  box-shadow: 0 0 18px rgba(245, 189, 53, 0.35);
+  z-index: 10;
+  position: relative;
+}
+
+/* Imagem do cartaz */
+.movie img {
+  transition: transform .35s ease, filter .35s ease;
+}
+
+/* Zoom na imagem */
+.movie:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+/* Borda dourada */
+.movie:hover {
+  border: 1px solid rgba(245, 189, 53, 0.8);
+}
+
+/* Botões e elementos internos com transição */
+.movie button {
+  transition: transform .2s ease, background .2s ease;
+}
+
+.movie button:hover {
+  transform: scale(1.05);
+}/* ===== BOTÃO DE FAVORITOS MECFLIX ===== */
+
+.movie {
+  position: relative;
+}
+
+.btn-favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .25s;
+}
+
+.btn-favorito:hover {
+  transform: scale(1.15);
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.btn-favorito.favoritado {
+  color: #f5bd35;
+}
+
+.btn-favorito:not(.favoritado) {
+  color: white;
 }
   </style>
 </head>
@@ -1073,6 +1148,42 @@ imagem.onerror = function() {
 card.onclick = function() {
   buscarTrailer(titulo, categoria);
 };
+  // ===== SISTEMA DE FAVORITOS =====
+
+let favoritos = JSON.parse(localStorage.getItem("mecflix_favoritos") || "[]");
+
+const tituloCard = card.querySelector("h3")?.textContent?.trim()
+  || card.querySelector(".titulo")?.textContent?.trim()
+  || card.getAttribute("data-titulo")
+  || card.textContent.trim().slice(0, 100);
+
+const botaoFavorito = document.createElement("button");
+
+botaoFavorito.className = "btn-favorito";
+botaoFavorito.innerHTML = favoritos.includes(tituloCard) ? "♥" : "♡";
+botaoFavorito.title = "Adicionar aos favoritos";
+
+if (favoritos.includes(tituloCard)) {
+  botaoFavorito.classList.add("favoritado");
+}
+
+botaoFavorito.onclick = function(event) {
+  event.stopPropagation();
+
+  if (favoritos.includes(tituloCard)) {
+    favoritos = favoritos.filter(item => item !== tituloCard);
+    botaoFavorito.innerHTML = "♡";
+    botaoFavorito.classList.remove("favoritado");
+  } else {
+    favoritos.push(tituloCard);
+    botaoFavorito.innerHTML = "♥";
+    botaoFavorito.classList.add("favoritado");
+  }
+
+  localStorage.setItem("mecflix_favoritos", JSON.stringify(favoritos));
+};
+
+card.appendChild(botaoFavorito);
   catalogo.appendChild(card);
 });// ===== SISTEMA DE AVALIAÇÃO MECFLIX =====
 function adicionarAvaliacoes() {
