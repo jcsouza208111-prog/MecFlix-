@@ -411,17 +411,39 @@ footer {
   font-size: 12px;
   margin-top: 3px;
 }
+    /* LOGO OFICIAL MECFLIX */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 190px;
+  height: 70px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
   </style>
 </head>
 <body>
 <header>
   <nav class="wrap">
-    <a class="logo" href="#inicio">Mec<span>Flix</span></a>
-    <div class="navlinks"><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#duvidas">Dúvidas</a></div>
+    <a class="logo" href="#inicio">
+      <img src="logo.png" alt="MecFlix" class="logo-img">
+    </a>
+
+    <div class="navlinks">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#planos">Planos</a>
+      <a href="#duvidas">Dúvidas</a>
+    </div>
+
     <a class="btn" href="#planos">Ver planos</a>
   </nav>
 </header>
-
 <main>
   <section class="hero" id="inicio">
     <div class="wrap hero-content">
