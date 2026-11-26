@@ -313,6 +313,50 @@ footer {
   cursor: pointer;
   border-radius: 5px;
 }
+    /* ===== ESTRELAS DOURADAS MECFLIX ===== */
+
+.avaliacao-publico {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.nota-texto {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.estrelas {
+  display: flex;
+  gap: 4px;
+}
+
+.estrela {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none;
+  padding: 0;
+  color: #777;
+  font-size: 22px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.estrela.selecionada {
+  color: #FFD700 !important;
+}
+
+.estrela:hover {
+  color: #FFC107 !important;
+  transform: scale(1.15);
+}
+
+.sua-nota {
+  color: #FFD700;
+  font-size: 12px;
+  margin-top: 3px;
+}
   </style>
 </head>
 <body>
