@@ -975,14 +975,17 @@ footer {
     <a class="logo" href="#inicio">
       <img src="logo.png" alt="MecFlix" class="logo-img">
     </a>
+<div class="navlinks">
+  <a class="ativo" href="#inicio" onclick="filtrarCatalogo('todos')">Início</a>
 
-    <div class="navlinks">
-      <a class="ativo" href="#inicio">Início</a>
-      <a href="#catalogo">Filmes</a>
-      <a href="#catalogo">Séries</a>
-      <a href="#catalogo">Animes</a>
-      <a href="#catalogo">Categorias</a>
-    </div>
+  <a href="#catalogo" onclick="filtrarCatalogo('filme')">Filmes</a>
+
+  <a href="#catalogo" onclick="filtrarCatalogo('serie')">Séries</a>
+
+  <a href="#catalogo" onclick="filtrarCatalogo('anime')">Animes</a>
+
+  <a href="#catalogo" onclick="filtrarCatalogo('todos')">Categorias</a>
+</div>
 
     <a class="btn" href="#catalogo">Explorar</a>
 
