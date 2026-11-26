@@ -425,23 +425,99 @@ footer {
   object-position: left center;
   display: block;
 }
+    /* ===== NOVO CABEÇALHO MECFLIX ===== */
+
+.header-mecflix {
+  background: #05070b;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-mecflix {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 110px;
+  gap: 25px;
+}
+
+.nav-mecflix .logo-img {
+  width: 240px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.nav-mecflix .navlinks {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-mecflix .navlinks a {
+  color: #f5f5f5;
+  font-size: 17px;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.nav-mecflix .navlinks a:hover,
+.nav-mecflix .navlinks a.ativo {
+  color: #f5bd35;
+}
+
+.nav-mecflix .navlinks a.ativo {
+  border-bottom: 3px solid #f5bd35;
+  padding-bottom: 10px;
+}
+
+.nav-mecflix .btn {
+  background: #f5bd35;
+  color: #080808;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 12px 24px;
+  text-decoration: none;
+}
+
+@media(max-width: 850px) {
+  .nav-mecflix {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .nav-mecflix .navlinks {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-mecflix .logo-img {
+    width: 190px;
+  }
+}
   </style>
 </head>
 <body>
-<header>
-  <nav class="wrap">
+<header class="header-mecflix">
+  <nav class="wrap nav-mecflix">
+
     <a class="logo" href="#inicio">
       <img src="logo.png" alt="MecFlix" class="logo-img">
     </a>
 
     <div class="navlinks">
-      <a href="#catalogo">Catálogo</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#planos">Planos</a>
-      <a href="#duvidas">Dúvidas</a>
+      <a class="ativo" href="#inicio">Início</a>
+      <a href="#catalogo">Filmes</a>
+      <a href="#catalogo">Séries</a>
+      <a href="#catalogo">Animes</a>
+      <a href="#catalogo">Categorias</a>
     </div>
 
-    <a class="btn" href="#planos">Ver planos</a>
+    <a class="btn" href="#catalogo">Explorar</a>
+
   </nav>
 </header>
 <main>
