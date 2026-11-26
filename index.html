@@ -961,6 +961,41 @@ function adicionarAvaliacoes() {
   });
 }
 
+/* ===== PESQUISA MECFLIX ===== */
+
+const botaoLupa = document.getElementById("botaoLupa");
+const campoPesquisa = document.getElementById("campoPesquisa");
+
+botaoLupa.addEventListener("click", function() {
+  campoPesquisa.classList.toggle("aberto");
+
+  if (campoPesquisa.classList.contains("aberto")) {
+    campoPesquisa.focus();
+  } else {
+    campoPesquisa.value = "";
+    pesquisarCatalogo("");
+  }
+});
+
+campoPesquisa.addEventListener("input", function() {
+  pesquisarCatalogo(campoPesquisa.value);
+});
+
+function pesquisarCatalogo(texto) {
+  const cards = document.querySelectorAll(".movies .movie");
+  const busca = texto.toLowerCase().trim();
+
+  cards.forEach(card => {
+    const titulo = card.querySelector("strong")?.textContent.toLowerCase() || "";
+
+    if (titulo.includes(busca)) {
+      card.classList.remove("hidden");
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+}
+
 adicionarAvaliacoes();
 </script>
 </body>
