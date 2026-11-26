@@ -472,8 +472,6 @@ footer {
     alert("Você escolheu: " + plano + ". Esta é uma demonstração; o pagamento e a assinatura ainda não estão conectados.");
   }
 window.filtrarCatalogo = function(categoria) {
-  alert("Filtro acionado: " + categoria);
-  
   const filmes = document.querySelectorAll(".movies .movie");
 
   filmes.forEach(function(filme) {
@@ -641,6 +639,21 @@ async function buscarTrailer(titulo, categoria) {
     alert("Erro ao procurar o trailer.");
     console.error(erro);
   }
+}
+  function abrirTrailer(videoId) {
+  const modal = document.getElementById("trailerModal");
+  const video = document.getElementById("trailerVideo");
+
+  modal.style.display = "flex";
+  video.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+}
+
+function fecharTrailer() {
+  const modal = document.getElementById("trailerModal");
+  const video = document.getElementById("trailerVideo");
+
+  modal.style.display = "none";
+  video.src = "";
 }
 novosTitulos.forEach(([titulo, categoria, poster]) => {
   const card = document.createElement("article");
