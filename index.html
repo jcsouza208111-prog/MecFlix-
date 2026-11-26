@@ -645,81 +645,6 @@ footer {
 
 .btn-favorito:not(.favoritado) {
   color: white;
-}/* ===== CONTINUAR ASSISTINDO MECFLIX ===== */
-
-.continuar-assistindo {
-  margin: 35px 0;
-}
-
-.continuar-assistindo h2 {
-  color: #f5bd35;
-  margin-bottom: 18px;
-}
-
-.lista-continuar {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 10px 5px 20px;
-}
-
-.item-continuar {
-  min-width: 150px;
-  max-width: 150px;
-  background: #121625;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.item-continuar:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(245, 189, 53, .25);
-}
-
-.item-continuar img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.item-continuar p {
-  padding: 8px;
-  color: white;
-  font-size: 13px;
-  text-align: center;
-}
-
-.item-continuar .barra-progresso {
-  height: 4px;
-  background: #333;
-}
-
-.item-continuar .barra-progresso div {
-  height: 100%;
-  width: 0%;
-  background: #f5bd35;
-}
-// ===== HISTÓRICO CONTINUAR ASSISTINDO =====
-
-function salvarHistorico(titulo, categoria, poster) {
-  let historico = JSON.parse(
-    localStorage.getItem("mecflix_historico") || "[]"
-  );
-
-  historico = historico.filter(item => item.titulo !== titulo);
-
-  historico.unshift({
-    titulo: titulo,
-    categoria: categoria,
-    poster: poster,
-    data: Date.now()
-  });
-
-  historico = historico.slice(0, 20);
-
-  localStorage.setItem("mecflix_historico", JSON.stringify(historico));
 }
   </style>
 </head>
@@ -765,8 +690,43 @@ function salvarHistorico(titulo, categoria, poster) {
     </div>
   </section>
 
-  <section class="catalog" id="catalogo">
-    <div class="wrap">
+</section>
+
+<!-- ===== CONTINUAR ASSISTINDO ===== -->
+<section class="continuar-assistindo" id="continuarAssistindo">
+  <div class="wrap">
+    <h2>▶ Continuar Assistindo</h2>
+    <div class="lista-continuar" id="listaContinuar">
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATÁLOGO MECFLIX ===== -->
+<section class="catalog" id="catalogo">
+  <div class="wrap">
+
+    <h2 class="section-title">Um universo de histórias</h2>
+
+    <div class="catalog-filters">
+      <button onclick="filtrarCatalogo('todos')">Todos</button>
+      <button onclick="filtrarCatalogo('filme')">Filmes</button>
+      <button onclick="filtrarCatalogo('serie')">Séries</button>
+      <button onclick="filtrarCatalogo('anime')">Animes</button>
+    </div>
+
+    <!-- JANELA DO TRAILER -->
+    <div id="trailerModal" class="trailer-modal">
+      <div class="trailer-conteudo">
+        <button class="fechar-trailer" onclick="fecharTrailer()">✕</button>
+        <iframe
+          id="trailerVideo"
+          src=""
+          title="Trailer"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>   <div class="wrap">
       <h2 class="section-title">Um universo de histórias</h2>
       <div class="catalog-filters">
   <button onclick="filtrarCatalogo('todos')">Todos</button>
@@ -903,6 +863,83 @@ function salvarHistorico(titulo, categoria, poster) {
   >🔍</button>
 </div>
 <script>
+  /* ===== CONTINUAR ASSISTINDO MECFLIX ===== */
+
+.continuar-assistindo {
+  margin: 35px 0;
+}
+
+.continuar-assistindo h2 {
+  color: #f5bd35;
+  margin-bottom: 18px;
+}
+
+.lista-continuar {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 5px 20px;
+}
+
+.item-continuar {
+  min-width: 150px;
+  max-width: 150px;
+  background: #121625;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.item-continuar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(245, 189, 53, .25);
+}
+
+.item-continuar img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.item-continuar p {
+  padding: 8px;
+  color: white;
+  font-size: 13px;
+  text-align: center;
+}
+
+.item-continuar .barra-progresso {
+  height: 4px;
+  background: #333;
+}
+
+.item-continuar .barra-progresso div {
+  height: 100%;
+  width: 0%;
+  background: #f5bd35;
+}
+// ===== HISTÓRICO CONTINUAR ASSISTINDO =====
+
+function salvarHistorico(titulo, categoria, poster) {
+  let historico = JSON.parse(
+    localStorage.getItem("mecflix_historico") || "[]"
+  );
+
+  historico = historico.filter(item => item.titulo !== titulo);
+
+  historico.unshift({
+    titulo: titulo,
+    categoria: categoria,
+    poster: poster,
+    data: Date.now()
+  });
+
+  historico = historico.slice(0, 20);
+
+  localStorage.setItem("mecflix_historico", JSON.stringify(historico));
+}
+ 
   function escolherPlano(plano){
     alert("Você escolheu: " + plano + ". Esta é uma demonstração; o pagamento e a assinatura ainda não estão conectados.");
   }
@@ -1355,6 +1392,62 @@ function pesquisarCatalogo(texto) {
 }
 
 adicionarAvaliacoes();
+// ===== HISTÓRICO CONTINUAR ASSISTINDO =====
+function salvarHistorico(titulo, categoria, poster) {
+  let historico = JSON.parse(
+    localStorage.getItem("mecflix_historico") || "[]"
+  );
+
+  historico = historico.filter(item => item.titulo !== titulo);
+
+  historico.unshift({
+    titulo: titulo,
+    categoria: categoria,
+    poster: poster,
+    data: Date.now()
+  });
+
+  historico = historico.slice(0, 20);
+
+  localStorage.setItem("mecflix_historico", JSON.stringify(historico));
+
+  mostrarHistorico();
+}
+
+
+// ===== MOSTRAR CONTINUAR ASSISTINDO =====
+function mostrarHistorico() {
+  const lista = document.getElementById("listaContinuar");
+
+  if (!lista) return;
+
+  const historico = JSON.parse(
+    localStorage.getItem("mecflix_historico") || "[]"
+  );
+
+  lista.innerHTML = "";
+
+  historico.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "item-continuar";
+
+    card.innerHTML = `
+      <img src="https://image.tmdb.org/t/p/w500/${item.poster}"
+           alt="${item.titulo}">
+      <p>${item.titulo}</p>
+      <div class="barra-progresso">
+        <div></div>
+      </div>
+    `;
+
+    card.onclick = function() {
+      buscarTrailer(item.titulo, item.categoria);
+    };
+
+    lista.appendChild(card);
+  });
+}
+  mostrarHistorico();
 </script>
 </body>
 </html>
