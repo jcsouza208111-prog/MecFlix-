@@ -701,6 +701,40 @@ footer {
   width: 0%;
   background: #f5bd35;
 }
+    /* ===== CORREÇÃO DO CABEÇALHO NO CELULAR ===== */
+@media (max-width: 760px) {
+
+  .header-mecflix {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .nav-mecflix {
+    min-height: 70px;
+    height: 70px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 5px 0;
+    gap: 8px;
+  }
+
+  .nav-mecflix .logo-img {
+    width: 145px;
+    height: 60px;
+  }
+
+  .nav-mecflix .navlinks {
+    display: none !important;
+  }
+
+  .nav-mecflix > .btn {
+    padding: 9px 15px;
+    font-size: 13px;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
   </style>
 </head>
 <body>
