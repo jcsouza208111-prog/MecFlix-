@@ -653,15 +653,103 @@ imagem.src = "https://image.tmdb.org/t/p/w500/" + poster;
 imagem.alt = titulo;
 imagem.loading = "lazy";
 
-// Corrigir automaticamente as capas que estão quebradas
-const capasParaCorrigir = [
-  "Bleach",
-  "JoJo's Bizarre Adventure",
-  "Vinland Saga",
-  "Dr. Stone",
-  "Black Clover",
-  "Tokyo Revengers"
-];
+// Nomes alternativos para buscas que usam títulos traduzidos
+const nomesAlternativos = {
+  "Duna: Parte Dois": ["Dune: Part Two"],
+  "Avatar: O Caminho da Água": ["Avatar: The Way of Water"],
+  "Guardiões da Galáxia 3": ["Guardians of the Galaxy Vol. 3"],
+  "Super Mario Bros.": ["The Super Mario Bros. Movie"],
+  "Coringa": ["Joker"],
+  "Vingadores: Guerra Infinita": ["Avengers: Infinity War"],
+  "A Origem": ["Inception"],
+  "Os Incríveis": ["The Incredibles"],
+  "Thor: Ragnarok": ["Thor Ragnarok"],
+  "Batman": ["The Batman"],
+  "Interestelar": ["Interstellar"],
+  "Vingadores: Ultimato": ["Avengers: Endgame"],
+  "Homem-Aranha: Sem Volta Para Casa": ["Spider-Man: No Way Home"],
+  "Wandinha": ["Wednesday"],
+  "A Casa do Dragão": ["House of the Dragon"],
+  "O Mandaloriano": ["The Mandalorian"],
+  "Round 6": ["Squid Game"],
+  "Pokémon": ["Pokemon"],
+  "Haikyuu!!": ["Haikyu"],
+  "My Hero Academia": ["Boku no Hero Academia"],
+  "JoJo's Bizarre Adventure": ["JoJo no Kimyou na Bouken"],
+  "Attack on Titan": ["Shingeki no Kyojin"],
+  "Demon Slayer": ["Kimetsu no Yaiba"],
+  "Death Note": ["Death Note"],
+  "Fullmetal Alchemist": ["Fullmetal Alchemist"],
+  "Hunter x Hunter": ["Hunter x Hunter"],
+  "One Piece": ["One Piece"],
+  "Bleach": ["Bleach"],
+  "Blue Lock": ["Blue Lock"],
+  "Vinland Saga": ["Vinland Saga"],
+  "Dr. Stone": ["Dr. Stone"],
+  "Black Clover": ["Black Clover"],
+  "Tokyo Revengers": ["Tokyo Revengers"],
+  "Sailor Moon": ["Bishoujo Senshi Sailor Moon"],
+  "Mob Psycho 100": ["Mob Psycho 100"],
+  "Jujutsu Kaisen": ["Jujutsu Kaisen"],
+  "Dragon Ball Z": ["Dragon Ball Z"],
+  "Naruto": ["Naruto"]
+};
+
+// Normaliza os títulos para comparar sem acentos ou símbolos
+function normalizarTitulo(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
+// Busca a capa correspondente no TMDB
+async function buscarCapaCorreta() {
+  const tipoTMDB = categoria === "filme" ? "movie" : "tv";
+  const nomes = [titulo, ...(nomesAlternativos[titulo] || [])];
+
+  for (const nomeBusca of nomes) {
+    try {
+      const resposta = await fetch(
+        `https://api.themoviedb.org/3/search/${tipoTMDB}?api_key=${TMDB_API_KEY}&language=pt-BR&query=${encodeURIComponent(nomeBusca)}`
+      );
+
+      const dados = await resposta.json();
+
+      if (!dados.results || !dados.results.length) continue;
+
+      const resultado = dados.results.find(item => {
+        const nomesTMDB = [
+          item.title,
+          item.name,
+          item.original_title,
+          item.original_name
+        ].filter(Boolean);
+
+        return nomesTMDB.some(nomeTMDB =>
+          normalizarTitulo(nomeTMDB) === normalizarTitulo(nomeBusca) ||
+          normalizarTitulo(nomeTMDB) === normalizarTitulo(titulo)
+        );
+      });
+
+      if (resultado && resultado.poster_path) {
+        imagem.src = "https://image.tmdb.org/t/p/w500" + resultado.poster_path;
+        return;
+      }
+    } catch (erro) {
+      console.error("Erro ao procurar capa de " + titulo, erro);
+    }
+  }
+}
+
+buscarCapaCorreta();
+
+// Se nenhuma imagem carregar, mostrar imagem de substituição
+imagem.onerror = function() {
+  this.src = "https://placehold.co/500x750/181818/ffffff?text=" +
+    encodeURIComponent(titulo);
+};
 
 if (capasParaCorrigir.includes(titulo)) {
   fetch(
@@ -717,7 +805,6 @@ card.onclick = function() {
 };
   catalogo.appendChild(card);
 });// ===== SISTEMA DE AVALIAÇÃO MECFLIX =====
-
 function adicionarAvaliacoes() {
   document.querySelectorAll(".movie").forEach(card => {
     if (card.querySelector(".avaliacao-publico")) return;
@@ -737,8 +824,8 @@ function adicionarAvaliacoes() {
     area.innerHTML = `
       <div class="nota-texto">Avalie este título:</div>
       <div class="estrelas">
-        ${[1, 2, 3, 4, 5].map(n => `
-          <button class="estrela" data-nota="${n}" title="${n} estrelas">★</button>
+        ${[1,2,3,4,5].map(n => `
+          <button class="estrela" data-nota="${n}">★</button>
         `).join("")}
       </div>
       <div class="sua-nota"></div>
@@ -761,7 +848,9 @@ function adicionarAvaliacoes() {
     }
 
     botoes.forEach(botao => {
-      botao.addEventListener("click", () => {
+      botao.addEventListener("click", e => {
+        e.stopPropagation();
+
         const nota = Number(botao.dataset.nota);
         localStorage.setItem(chave, nota);
         atualizarEstrelas(nota);
@@ -774,70 +863,8 @@ function adicionarAvaliacoes() {
 }
 
 adicionarAvaliacoes();
-  
-function abrirTrailer(videoId) {
-  const modal = document.getElementById("trailerModal");
-  const video = document.getElementById("trailerVideo");
 
-  video.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1";
-  modal.style.display = "flex";
-}
-
-function fecharTrailer() {
-  const modal = document.getElementById("trailerModal");
-  const video = document.getElementById("trailerVideo");
-
-  video.src = "";
-  modal.style.display = "none";
-}/* SISTEMA DE AVALIAÇÃO MECFLIX */
-.avaliacao-publico {
-  margin-top: 10px;
-  padding: 8px 0;
-  border-top: 1px solid rgba(255,255,255,.12);
-  color: #ffd54a;
-  font-size: 14px;
-}
-
-.avaliacao-publico .media-nota {
-  color: #ffd54a;
-  font-weight: bold;
-}
-
-.avaliacao-publico .total-votos {
-  color: #aaa;
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-.avaliacao-publico .estrelas {
-  display: flex;
-  gap: 3px;
-  margin-top: 6px;
-}
-
-.avaliacao-publico button {
-  border: none;
-  background: none;
-  color: #777;
-  font-size: 22px;
-  cursor: pointer;
-  padding: 0;
-  transition: .2s;
-}
-
-.avaliacao-publico button:hover {
-  color: #ffd54a;
-  transform: scale(1.15);
-}
-
-.avaliacao-publico button.ativa {
-  color: #ffd54a;
-}
-
-.avaliacao-publico .mensagem-nota {
-  font-size: 11px;
-  color: #aaa;
- /* ===== AVALIAÇÃO MECFLIX ===== */
+/* ===== AVALIAÇÃO MECFLIX ===== */
 .avaliacao-publico {
   margin-top: 10px;
   padding-top: 8px;
@@ -876,7 +903,6 @@ function fecharTrailer() {
   color: #ffd54a;
   font-size: 12px;
   margin-top: 4px;
-} margin-top: 4px;
 }
 </script>
 </body>
