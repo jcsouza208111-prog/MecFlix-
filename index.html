@@ -1863,15 +1863,15 @@ function mostrarHistorico() {
     const card = document.createElement("div");
     card.className = "item-continuar";
 
-    card.innerHTML = `
-      <img src="https://image.tmdb.org/t/p/w500/${item.poster}"
-           alt="${item.titulo}">
+   card.innerHTML = `
+      <img src="${item.poster ? 'https://image.tmdb.org/t/p/w500/' + item.poster : 'https://placehold.co/300x450/121625/aaaaaa?text=Sem+Imagem'}"
+           alt="${item.titulo}"
+           onerror="this.onerror=null;this.src='https://placehold.co/300x450/121625/aaaaaa?text=Sem+Imagem'">
       <p>${item.titulo}</p>
       <div class="barra-progresso">
         <div></div>
       </div>
     `;
-
     card.onclick = function() {
       buscarTrailer(item.titulo, item.categoria);
     };
