@@ -734,6 +734,49 @@ footer {
     white-space: nowrap;
     margin: 0;
   }
+}/* ===== CABEÇALHO MOBILE MECFLIX ===== */
+@media screen and (max-width: 760px) {
+
+  .header-mecflix {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-mecflix {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .nav-mecflix .logo-img {
+    width: 160px;
+    height: 65px;
+  }
+
+  .nav-mecflix .navlinks {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 18px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 8px 5px;
+    white-space: nowrap;
+  }
+
+  .nav-mecflix .navlinks a {
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  .nav-mecflix > .btn {
+    display: none;
+  }
+
 }
   </style>
 </head>
