@@ -1688,8 +1688,10 @@ imagem.onerror = function() {
 
   info.append(tag, nome, trailer);
   card.append(imagem, info);
-
 card.onclick = function() {
+  console.log("TÍTULO:", titulo);
+  console.log("POSTER:", poster);
+
   salvarHistorico(titulo, categoria, poster);
   buscarTrailer(titulo, categoria);
 };
